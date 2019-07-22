@@ -849,7 +849,7 @@ def vdcupdate()
     system_details[system['name']]=sys
     # check if the type requested match the host one
     system_type = KatelloAttachSubscription::FactAnalyzer.system_type(sys)
-    if system_type == KatelloAttachSubscription::FactAnalyzer::HYPERVISOR
+    if system_type == KatelloAttachSubscription::FactAnalyzer::UNKNOWN
       STDERR.puts "  WARNING: host #{system['name']}' id #{system['id']} has not been recognized. This may happens because of a HYPERVISOR does not have any guest. Try to leverage on virtwho option."
     end
     # for each item in yaml extract sub
