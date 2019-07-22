@@ -36,6 +36,10 @@ module KatelloAttachSubscription
 
     def self.system_type(host, facts = nil)
       facts = host['facts'] unless facts
+      # workaround, if a host does not have a valid list of facts, the code will fail in self.system_type_from_facts(facts)
+      if not facts.is_a?(Hash)
+        facts = {}
+      end
       self.system_type_from_host(host) || self.system_type_from_facts(facts) || UNKNOWN
     end
   end
